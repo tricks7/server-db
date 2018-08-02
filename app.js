@@ -1,13 +1,10 @@
 const express = require('express')
 const app = express()
+const queries = require('./queries')
 const port = 7000
 
-app.use(cors())
-app.use(bodyParser.json())
-
-
 app.get('/',(request, response, next) => {
-    response.send('🎉')
+    queries.getAll().then(cats => response.json({cats}))
 })
 
 
